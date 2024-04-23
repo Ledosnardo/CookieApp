@@ -1,0 +1,27 @@
+[
+    {
+      "id": "65d22832673dbc7aa64522a8",
+      "name": "Nutella",
+      "price": 7
+    },
+    {
+      "id": "65d22840673dbc7aa64522a9",
+      "name": "Brigadeiro",
+      "price": 6
+    },
+    {
+      "id": "65d2284b673dbc7aa64522aa",
+      "name": "Red Velvet",
+      "price": 7
+    },
+    {
+      "id": "65d22862673dbc7aa64522ab",
+      "name": "Nozes",
+      "price": 7
+    },
+    {
+      "id": "65d2286c673dbc7aa64522ac",
+      "name": "Prestígio",
+      "price": 7
+    }
+  ]
