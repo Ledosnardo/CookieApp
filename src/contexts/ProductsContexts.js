@@ -15,17 +15,21 @@ const ProductsProvider = ({ children }) => {
         setProducts(cookiesJson)
     }
 
-    const putProduct = (products) => {
+    const createProduct = (newProduct) => {
+        setProducts(updater => [...updater, newProduct])
+    }
+
+    const putProduct = (product) => {
         setProducts(updater => {
-            const list = updater.filter(x => x.id != products.id)
-            list.push(products)
+            const list = updater.filter(x => x.id != product.id)
+            list.push(product)
             
             return list
         })
     }
 
     return(
-        <ProductsContext.Provider value={{ products, putProduct }}>
+        <ProductsContext.Provider value={{ products, putProduct, createProduct }}>
             { children }
         </ProductsContext.Provider>
     )

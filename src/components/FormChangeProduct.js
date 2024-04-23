@@ -1,7 +1,25 @@
 import React from "react"
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
-const FormChangeCookie = ({ product, Controller, handleSignIn, handleSubmit, control, errors }) => {
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import { useForm, Controller } from 'react-hook-form'
+
+const schema = yup.object({
+    name: yup.string().required("Informe um novo nome"),
+    price: yup
+        .number()
+        .transform((value) => (isNaN(value) || value === null || value === undefined) ? 0 : value)
+        .required("Informe um valor")
+        .positive("O valor tem que ser positivo")
+})
+
+const FormChangeProduct = ({ nameTag, priceTag , buttonTag, functionSubmit, placeholderName, placeholderPrice }) => {
+
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    })
+
     return (
         <View style={styles.container}>
             <Controller
@@ -9,13 +27,13 @@ const FormChangeCookie = ({ product, Controller, handleSignIn, handleSubmit, con
                 name="name"
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.content}>
-                        <Text style={styles.name}>{product.name}</Text>
+                        <Text style={styles.name}>{nameTag}</Text>
                         <TextInput 
                             style={styles.input}
                             onChangeText={onChange}
                             onBlur={onBlur}
                             value={value}
-                            placeholder="Novo Nome"
+                            placeholder={placeholderName ? placeholderName : ""}
                         />
                     </View>
                 )}
@@ -27,13 +45,13 @@ const FormChangeCookie = ({ product, Controller, handleSignIn, handleSubmit, con
                 name="price"
                 render={({ field: { onChange, onBlur, value } }) => (
                     <View style={styles.content}>
-                        <Text style={styles.name}>R${product.price}</Text>
+                        <Text style={styles.name}>{priceTag}</Text>
                         <TextInput 
                             style={styles.input}
                             onChangeText={onChange}
                             onBlur={onBlur}
                             value={value}
-                            placeholder="Novo Preço"
+                            placeholder={placeholderPrice ? placeholderPrice : ""}
                             keyboardType="decimal-pad"
                         />
                     </View>
@@ -41,8 +59,8 @@ const FormChangeCookie = ({ product, Controller, handleSignIn, handleSubmit, con
             />
             {errors.price && <Text>{errors.price?.message}</Text>}
 
-            <TouchableOpacity onPress={handleSubmit(handleSignIn)} style={styles.button}>
-                <Text style={styles.buttonText}>Alterar</Text>
+            <TouchableOpacity onPress={handleSubmit(functionSubmit)} style={styles.button}>
+                <Text style={styles.buttonText}>{buttonTag}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -96,4 +114,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default FormChangeCookie
+export default FormChangeProduct
