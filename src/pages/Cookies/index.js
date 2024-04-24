@@ -4,7 +4,7 @@ import { ProductsContext } from "../../contexts/ProductsContexts";
 
 
 const Products = ({ navigation }) => {
-    const { products } = useContext(ProductsContext)
+    const { products, deleteProduct } = useContext(ProductsContext)
 
     const newProduct = () => {
         navigation.navigate("Novo Produto")
@@ -34,7 +34,8 @@ const Products = ({ navigation }) => {
                                 </Button>
                                 <Button 
                                     title="🗑️" 
-                                    color={`#703e1f`}>
+                                    color={`#703e1f`}
+                                    onPress={() => deleteProduct(product)}>
                                 </Button>
                         </View>
                     </View>

@@ -28,8 +28,16 @@ const ProductsProvider = ({ children }) => {
         })
     }
 
+    const deleteProduct = (product) => {
+        setProducts(updater => {
+            const list = updater.filter(x => x.id != product.id)
+            
+            return list
+        })
+    }
+
     return(
-        <ProductsContext.Provider value={{ products, putProduct, createProduct }}>
+        <ProductsContext.Provider value={{ products, putProduct, createProduct, deleteProduct }}>
             { children }
         </ProductsContext.Provider>
     )
