@@ -4,7 +4,16 @@ import { Button, StyleSheet, View } from "react-native";
 const MainPage = ({navigation}) =>{
     return(
         <View style={styles.container}>
-            <Button title="cookies" onPress={() => navigation.navigate("Products")}/>
+          <View style={styles.content}>
+            <Button 
+              title="Produtos" 
+              onPress={() => navigation.navigate("Produtos")}
+            />
+            <Button 
+              title="Compradores" 
+              onPress={() => navigation.navigate("Compradores")}
+            />
+          </View>
         </View>
     )
 }
@@ -14,10 +23,13 @@ const MainPage = ({navigation}) =>{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: "center",
+      alignItems: 'center'
     },
+    content: {
+      height: "20%",
+      justifyContent: "space-around",
+    }
   });
 
 export default MainPage;

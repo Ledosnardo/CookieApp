@@ -6,6 +6,8 @@ import Products from './src/pages/Cookies';
 import EditProduct from './src/pages/Cookies/EditProduct';
 import ProductsProvider from './src/contexts/ProductsContexts';
 import NewProduct from './src/pages/Cookies/NewProduct';
+import Buyers from './src/pages/Buyers';
+import BuyersProvider from './src/contexts/BuyersContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,14 +15,17 @@ export default function App() {
   return (
     <NavigationContainer>
         <ProductsProvider>
+          <BuyersProvider>
 
-          <Stack.Navigator initialRouteName="Home">
-              <Stack.Screen name="Home" component={Home} />
-              <Stack.Screen name="Products" component={Products} />
-              <Stack.Screen name="Editar Produto" component={EditProduct} />
-              <Stack.Screen name="Novo Produto" component={NewProduct} />
-          </Stack.Navigator>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="Produtos" component={Products} />
+                <Stack.Screen name="Compradores" component={Buyers} />
+                <Stack.Screen name="Editar Produto" component={EditProduct} />
+                <Stack.Screen name="Novo Produto" component={NewProduct} />
+            </Stack.Navigator>
 
+          </BuyersProvider>
         </ProductsProvider>
     </NavigationContainer>
   );

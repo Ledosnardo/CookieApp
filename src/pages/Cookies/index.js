@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
 import { ProductsContext } from "../../contexts/ProductsContexts";
-
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Products = ({ navigation }) => {
     const { products, deleteProduct } = useContext(ProductsContext)
@@ -27,16 +28,12 @@ const Products = ({ navigation }) => {
                             <Text>{product.price} R$</Text>
                         </View>
                         <View style={styles.edits}>
-                                <Button
-                                    title="✏️" 
-                                    color={`#703e1f`} 
-                                    onPress={() => editProduct(product)}>
-                                </Button>
-                                <Button 
-                                    title="🗑️" 
-                                    color={`#703e1f`}
-                                    onPress={() => deleteProduct(product)}>
-                                </Button>
+                                <TouchableOpacity style={styles.icon} onPress={() => editProduct(product)}>
+                                    <Entypo name="pencil" size={20} color="white" />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.icon} onPress={() => deleteProduct(product)}>
+                                    <FontAwesome name="trash" size={20} color="white" />
+                                </TouchableOpacity>
                         </View>
                     </View>
                 )
@@ -84,7 +81,17 @@ const styles = StyleSheet.create(({
     edits: {
         width: "35%",
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        alignItems: "center"
+    },
+
+    icon: {
+        backgroundColor: "#703e1f",
+        width: "30%",
+        borderRadius: 5,
+        padding: 8,
+        justifyContent: "space-around",
+        alignItems: "center"
     }
 }));
 
