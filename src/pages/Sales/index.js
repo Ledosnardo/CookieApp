@@ -1,19 +1,39 @@
 import React, { useState } from "react";
-import { Text, TextInput, View } from "react-native";
-
-import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from "@hookform/resolvers/yup";
+import { StyleSheet, View } from "react-native";
 import CookiesBuy from "./CookiesBuy";
+import InfoBuy from "./InfoBuy";
 
 const Sales = () => {
-    const { control, handleSubmit, formState: { errors } } = useForm({
-        resolver: yupResolver()
-    })
     const [ purchaseValue, setPurchaseValue ] = useState(0)
+    const [ isPayAll, setIsPayAll ] = useState(true)
+    const [ valuePay, setValuePay ] = useState('')
 
     return(
-        <CookiesBuy setPurchaseValue={setPurchaseValue}/>
+        <>
+            <View style={styles.infoBuy}>
+                <InfoBuy 
+                    purchaseValue={purchaseValue} 
+                    isPayAll={isPayAll}
+                    setIsPayAll={setIsPayAll}
+                    valuePay={valuePay}
+                    setValuePay={setValuePay}
+                />
+            </View>
+            <View>
+                <CookiesBuy setPurchaseValue={setPurchaseValue} />
+            </View>
+        </>
     )
 }
+
+const styles = StyleSheet.create({
+    infoBuy:{
+        borderBottomWidth: 1,
+        paddingBottom: 20,
+        marginBottom: 15,
+        borderStyle: "dashed",
+        borderColor: "#703e1f"
+    }
+})
 
 export default Sales;
