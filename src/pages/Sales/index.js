@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import CookiesBuy from "./CookiesBuy";
 import InfoBuy from "./InfoBuy";
+import SearchBuyer from "./SearchBuyer";
 
 const Sales = () => {
+    const [ shoppingCart, setShoppingCart ] = useState([])
     const [ purchaseValue, setPurchaseValue ] = useState(0)
     const [ isPayAll, setIsPayAll ] = useState(true)
     const [ valuePay, setValuePay ] = useState('')
+    const [ valueSearchBuyer, setValueSearchBuyer ] = useState('')
 
     return(
         <>
+            <View>
+                <SearchBuyer valueSearch={valueSearchBuyer}  setValueSearch={setValueSearchBuyer}/>
+            </View>
             <View style={styles.infoBuy}>
                 <InfoBuy 
                     purchaseValue={purchaseValue} 
@@ -20,7 +26,11 @@ const Sales = () => {
                 />
             </View>
             <View>
-                <CookiesBuy setPurchaseValue={setPurchaseValue} />
+                <CookiesBuy 
+                    setPurchaseValue={setPurchaseValue} 
+                    shoppingCart={shoppingCart}
+                    setShoppingCart={setShoppingCart}
+                />
             </View>
         </>
     )

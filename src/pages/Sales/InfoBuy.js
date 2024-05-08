@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
        borderRadius: 10
     },
     containerValueText: {
-        color: "white"
+        color: "#F4FDFF"
     }
 })
 

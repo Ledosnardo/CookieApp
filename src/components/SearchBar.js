@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+
 
 
 
@@ -45,7 +46,8 @@ const SearchBar = ({ inputString, setInputString, setSearch, buyers }) => {
             <TouchableOpacity onPress={findBuyer} style={styles.search}>
                 <FontAwesome name="search" size={20} color="black" />
             </TouchableOpacity>
-            {returnButton ? returnList() : ''}
+            {returnButton 
+            ? returnList() : ''}
         </View>
     )
 }

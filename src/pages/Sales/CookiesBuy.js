@@ -5,12 +5,11 @@ import { ProductsContext } from "../../contexts/ProductsContexts";
 import { Entypo } from '@expo/vector-icons';
 import uuid from 'react-native-uuid';
 
-const CookiesBuy = ({ setPurchaseValue }) => {
+const CookiesBuy = ({ setPurchaseValue, shoppingCart, setShoppingCart  }) => {
     const { products } = useContext(ProductsContext)
 
     const [ valueDropDown, setValueDropDown] = useState(products[0])
     const [ amount, setAmount ] = useState(0)
-    const [ shoppingCart, setShoppingCart ] = useState([])
     const [ errorInput, setErrorInput ] = useState(false)
 
     const addCookie = () => {
